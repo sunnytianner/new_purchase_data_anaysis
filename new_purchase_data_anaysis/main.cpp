@@ -7,12 +7,19 @@
 //
 
 #include <iostream>
+#include "NewPurchaseDataAnalysis.h"
 
 int main(int argc, const char * argv[])
 {
-
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    NewPurchaseDataAnalysis analysis("new","/Users/tian19880220/workspace/data/new_purchase_data_anaysis/test","/Users/tian19880220/workspace/data/new_purchase_data_anaysis/trans");
+    analysis.loadTransferModel();
+    for (int i=0; i<=10; i++) {
+        analysis.setControlThreshold(i);
+        cout << i << ":" << endl;
+        analysis.predictFromHistoryAnalysis();
+        analysis.resetValues();
+    }
+    
     return 0;
 }
 
